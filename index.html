@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quaid Garton — Aerospace Engineer</title>
+<meta name="description" content="Aerospace Engineer · Astrodynamics, Flight Dynamics & GNC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">QUAID<span>·</span>GARTON</div>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="resume-btn" href="#" target="_blank" rel="noopener">Résumé ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="stars"></canvas>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Aerospace Engineer &middot; Astrodynamics &amp; GNC</div>
+
+    <div class="orbit-hero">
+      <div class="orbit-ring" aria-hidden="true"></div>
+      <div class="orbit-sat" aria-hidden="true"><i></i></div>
+      <h1 class="name disp">Quaid Garton</h1>
+    </div>
+
+    <p class="tagline">Trajectories, transfers, and the guidance systems that fly them.</p>
+
+    <p class="quickfacts">B.S. Aerospace Engineering, CU Boulder &middot; <span class="todo">[your city, state]</span> &middot; open to GNC &amp; flight dynamics roles</p>
+
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-ghost" href="https://github.com/qgarton" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="mailto:you@example.com">Email</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="line"></div>SCROLL</div>
+</header>
+
+<main>
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">Selected Work</div>
+        <h2 class="sec-title disp">Projects</h2>
+        <p class="sec-sub">A mix of personal, academic, and team builds spanning astrodynamics, attitude sensing, and flight hardware.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="card reveal">
+          <span class="status-chip">Active &middot; EKF in progress</span>
+          <h3>OrbitKit</h3>
+          <div class="org mono">Personal Project &middot; Python</div>
+          <p>A Python toolkit for orbital mechanics and mission design, built to demonstrate GNC and astrodynamics competency: a Lambert solver, porkchop plot generator, N-body numerical propagator, and a JPL Horizons ephemeris parser. Developing an Extended Kalman Filter for state estimation next, with attitude determination and proximity operations modeling planned after.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">NumPy / SciPy</span>
+            <span class="tag">Lambert Solver</span>
+            <span class="tag">N-Body Propagation</span>
+            <span class="tag">pytest</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/qgarton/orbitaltoolkit" target="_blank" rel="noopener">Repo →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <span class="status-chip todo-chip">[status — e.g. Completed, Spring 2023]</span>
+          <h3>Star Tracker</h3>
+          <div class="org mono todo">[CU Boulder Senior Design &middot; team size]</div>
+          <p class="todo">[Add 2-3 sentences: what the star tracker did, your specific role (optics, algorithm, testing, integration), and a standout result or metric.]</p>
+          <div class="tags">
+            <span class="tag todo">[tag]</span>
+            <span class="tag todo">[tag]</span>
+            <span class="tag todo">[tag]</span>
+          </div>
+          <div class="card-links">
+            <a href="#" class="todo">[Repo / report link →]</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <span class="status-chip todo-chip">[status]</span>
+          <h3>Rocket Launch Controller</h3>
+          <div class="org mono todo">MiSSE &middot; [your role]</div>
+          <p class="todo">[Add 2-3 sentences: what the controller did — ignition sequencing? telemetry? abort logic? — the hardware/software stack, and what rocket or program it supported.]</p>
+          <div class="tags">
+            <span class="tag todo">[tag]</span>
+            <span class="tag todo">[tag]</span>
+            <span class="tag todo">[tag]</span>
+          </div>
+          <div class="card-links">
+            <a href="#" class="todo">[Repo / writeup link →]</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">About</div>
+        <h2 class="sec-title disp">Background</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div class="portrait">[headshot]</div>
+        <div class="about-text">
+          <p>An outdoor enthusiast who loves physics too much to leave the engineering world behind. I apply a strong foundation in orbital mechanics, trajectory propagation, and simulation-based state estimation toward guidance, navigation, and control solutions for spacecraft.</p>
+          <p class="dim">My background includes manufacturing engineering work on Sierra Space's Dream Chaser sensor packages — vibration, shock, and thermal vacuum testing — alongside a Teaching Fellow role for CU Boulder's Experimental &amp; Computational Methods course. Outside of engineering, I guide whitewater rafting trips, instruct backcountry skiing, and kitesurf whenever the wind cooperates.</p>
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">MATLAB</span>
+            <span class="skill">STK</span>
+            <span class="skill">GMAT</span>
+            <span class="skill">NumPy / SciPy</span>
+            <span class="skill">Git</span>
+            <span class="skill">Orbital Mechanics</span>
+            <span class="skill">Vibration &amp; Thermal-Vac Testing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <div class="sec-eyebrow">Get in touch</div>
+      <h2 class="sec-title disp">Let's talk trajectories.</h2>
+      <p class="contact-sub">Open to GNC, flight dynamics, and orbital mechanics roles. Reach out — or just say hi.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:you@example.com">Email Me</a>
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/qgarton" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span id="year"></span> &middot; &copy; Quaid Garton. All rights reserved.
+</footer>
+
+<script src="js/script.js" defer></script>
+
+</body>
+</html>
