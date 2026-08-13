@@ -9,7 +9,7 @@
   const pathId = 'orbit-path-' + orbit.id;
   const TRAIL_ECHOES = 26; // shrinking glow-echoes making up each fading tail
 
-  const keyTimesStr = orbit.keyTimes.join(';');
+  const keyTimesStr = orbit.keyTimes ? orbit.keyTimes.join(';') : '';
 
   const glowDefs = ['a','b','c'].map(letter => {
     const varName = letter === 'a' ? '--flare' : letter === 'b' ? '--teal' : '--nebula';
