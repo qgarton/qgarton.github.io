@@ -7,15 +7,10 @@
 
   const orbit = ORBITS[Math.floor(Math.random() * ORBITS.length)];
   const pathId = 'orbit-path-' + orbit.id;
-  const L = orbit.totalLength;
-  const TRAIL_ECHOES = 6; // segments making up each fading comet tail
+  const TRAIL_ECHOES = 26; // shrinking glow-echoes making up each fading tail
 
   const keyTimesStr = orbit.keyTimes.join(';');
-  const dashValues = orbit.keyPoints.map(p => (-(p * L)).toFixed(5)).join(';');
-  const dashLen = (L * 0.045).toFixed(4);
 
-  // glow halos: one radial gradient per color, referenced by id from
-  // colorClass (e.g. "body-a" -> "glow-a")
   const glowDefs = ['a','b','c'].map(letter => {
     const varName = letter === 'a' ? '--flare' : letter === 'b' ? '--teal' : '--nebula';
     return `
@@ -34,9 +29,6 @@
     const bKeyTimes = b.keyTimes ? b.keyTimes.join(';') : keyTimesStr;
     const bKeyPoints = (b.keyPoints || orbit.keyPoints).join(';');
     const begin = (b.begin != null ? b.begin : 0);
-    // clean, unstyled geometry copy -- used by BOTH the mpath motion
-    // reference and the trail's <use>, so nothing ever inherits the visible
-    // background curve's pale stroke color.
     const geomId = `${pathId}-geom-${i}`;
     extraPaths += `<path id="${geomId}" d="${b.path || orbit.path}" style="display:none" />`;
 
@@ -49,22 +41,28 @@
           <mpath href="#${geomId}" />
         </animateMotion>
         <circle r="0.06" fill="url(#${glowId})" />
-        <circle r="0.01" class="orbit-body ${b.colorClass}" />
+        <circle r="0.015" class="orbit-body ${b.colorClass}" />
       </g>`;
 
-    const trailSpan = orbit.dur / 3;
+    // trail: shrinking, fading copies of the glow halo (no core dot), each
+    // delayed a bit further behind -- exact same motion mechanism as the
+    // main dot, just smaller/dimmer/later, so it's guaranteed to move
+    // correctly since it's the same technique that's already working.
+    const trailSpan = orbit.dur / 6;
     for(let e = 1; e <= TRAIL_ECHOES; e++){
       const frac = e / TRAIL_ECHOES;
       const echoBegin = begin + frac * trailSpan;
-      const opacity = (0.5 * Math.pow(1 - frac, 1.6)).toFixed(3);
-      const width = (0.05 * (1 - frac) + 0.008).toFixed(4);
+      const K = 3; // higher = sharper initial drop, longer faint tail
+      const shape = (Math.pow(2, -K * frac) - Math.pow(2, -K)) / (1 - Math.pow(2, -K));
+      const opacity = (0.55 * shape).toFixed(3);
+      const r = (0.06 * shape).toFixed(4);
       trailsHTML += `
-        <use href="#${geomId}" class="orbit-trail ${b.colorClass}"
-          style="stroke-width:${width}; stroke-opacity:${opacity};"
-          stroke-dasharray="${dashLen} ${L}">
-          <animate attributeName="stroke-dashoffset" dur="${orbit.dur}s" begin="${echoBegin}s"
-            repeatCount="indefinite" calcMode="linear" keyTimes="${keyTimesStr}" values="${dashValues}" />
-        </use>`;
+        <circle r="${r}" fill="url(#${glowId})" opacity="${opacity}">
+          <animateMotion dur="${orbit.dur}s" begin="${echoBegin}s" repeatCount="indefinite" rotate="0"
+            calcMode="linear" keyTimes="${bKeyTimes}" keyPoints="${bKeyPoints}">
+            <mpath href="#${geomId}" />
+          </animateMotion>
+        </circle>`;
     }
   });
 
@@ -82,6 +80,23 @@
     const svg = mount.querySelector('.orbit-svg');
     if(svg && svg.pauseAnimations) svg.pauseAnimations();
   }
+})();
+
+// mobile nav dropdown toggle
+(function(){
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if(!toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 })();
 
 // starfield
