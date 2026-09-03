@@ -158,7 +158,7 @@
     background:var(--panel); border:1px solid var(--edge); border-radius:8px; padding:26px 24px 24px;
     display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;
     transition:border-color .2s ease, transform .2s ease;
-    flex:0 0 min(420px, calc(100vw - 72px)); scroll-snap-align:start;
+    flex:0 0 min(420px, 75vw); scroll-snap-align:start;
   }
   .card::before{
     content:''; position:absolute; top:0; left:0; right:0; height:2px;
