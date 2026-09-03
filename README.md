@@ -1,4 +1,4 @@
-# Quaid Garton — Portfolio Site
+# Quaid Garton — Portfolio [Site](https://qgarton.github.io)
 
 A space-themed personal site built around a real, physically-verified n-body orbit animation. Static HTML/CSS/JS, no build step, deployed via GitHub Pages.
 
